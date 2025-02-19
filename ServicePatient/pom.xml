@@ -27,11 +27,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
 
         <!-- Tests avec Spring Boot -->
         <dependency>
@@ -71,10 +67,7 @@
                 <configuration>
                     <release>17</release>  <!-- 🔥 Assure la compatibilité avec Java 17 -->
                     <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
+
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>

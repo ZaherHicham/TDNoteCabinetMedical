@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+
+  # Eureka Server (Service Discovery)
+  eureka-server:
+    image: eureka-server
+    build:
+      context: ./eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - medical-network
+
+  # Patient Service
+  patient-service:
+    image: patient-service
+    build:
+      context: ./patient-service
+    container_name: patient-service
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    ports:
+      - "8081:8081"
+    networks:
+      - medical-network
+
+  # Praticien Service
+  praticien-service:
+    image: praticien-service
+    build:
+      context: ./praticien-service
+    container_name: praticien-service
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    ports:
+      - "8082:8082"
+    networks:
+      - medical-network
+
+  # Gateway Service
+  gateway-service:
+    image: gateway-service
+    build:
+      context: ./gateway-service
+    container_name: gateway-service
+    depends_on:
+      - eureka-server
+      - patient-service
+      - praticien-service
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    ports:
+      - "8080:8080"
+    networks:
+      - medical-network
+
+networks:
+  medical-network:
+    driver: bridge

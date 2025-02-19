@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: praticien-service
+  name: gateway-service
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: praticien-service
+      app: gateway-service
   template:
     metadata:
       labels:
-        app: praticien-service
+        app: gateway-service
     spec:
       containers:
-        - name: praticien-service
-          image: praticien-service:latest
+        - name: gateway-service
+          image: gateway-service:latest
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
           imagePullPolicy: IfNotPresent

@@ -20,5 +20,5 @@ public class GatewayController {
     public ResponseEntity<String> fallbackPraticiens() {
         return ResponseEntity.ok("Le service des praticiens est temporairement indisponible. Veuillez réessayer plus tard.");
     }
-    
+
 }
