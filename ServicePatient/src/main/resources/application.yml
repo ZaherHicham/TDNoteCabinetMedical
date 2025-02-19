@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8081
 
 spring:
   application:
-    name: practitioner-service
+    name: patient-service
 
 eureka:
   instance:
@@ -14,4 +14,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-

@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version>  <!-- ✅ Mise à jour vers Spring Boot 3.0.0 -->
+        <version>3.0.0</version>
         <relativePath/>
     </parent>
 
@@ -17,38 +17,43 @@
     <description>Cabinet Medical</description>
 
     <properties>
-        <java.version>17</java.version>  <!-- ✅ Java 17 requis pour Spring Boot 3 -->
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
-        <!-- ✅ Spring Boot Web Starter -->
+        <!-- Spring Boot Web Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- ✅ Lombok pour éviter les getters/setters -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- ✅ Tests avec Spring Boot -->
+        <!-- Tests avec Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- ✅ Remplacement de SpringFox (Swagger) par SpringDoc OpenAPI -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <!-- Remplacement de SpringFox (Swagger) par SpringDoc OpenAPI -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.2.0</version>
         </dependency>
 
-        <!-- ✅ Guava (Utilitaires Java) -->
+        <!-- Guava (Utilitaires Java) -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -59,7 +64,7 @@
 
     <build>
         <plugins>
-            <!-- ✅ Compiler Plugin (Support de Java 17) -->
+            <!-- Compiler Plugin (Support de Java 17) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -74,7 +79,7 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Spring Boot Maven Plugin -->
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
