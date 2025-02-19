@@ -26,7 +26,7 @@ eureka:
 resilience4j:
   circuitbreaker:
     instances:
-      patientServiceCircuitBreaker:
+      patientCircuitBreaker:
         registerHealthIndicator: true
         slidingWindowSize: 10
         failureRateThreshold: 50
@@ -38,3 +38,17 @@ resilience4j:
         automaticTransitionFromOpenToHalfOpenEnabled: true
         minimumNumberOfCalls: 5
         writableStackTraceEnabled: true
+
+      praticienCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 2s
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 2
+        maxWaitDurationInHalfOpenState: 10s
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        minimumNumberOfCalls: 5
+        writableStackTraceEnabled: true
+
