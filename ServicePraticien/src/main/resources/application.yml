@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: practitioner-service
+    name: praticien-service
 
 eureka:
   instance:

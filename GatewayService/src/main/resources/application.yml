@@ -5,12 +5,36 @@ spring:
   application:
     name: gateway-service
 
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true   # Active la découverte des services automatiquement via Eureka
+          lower-case-service-id: true # Assure que les noms des services sont en minuscule (ex: `patient-service`)
+
 eureka:
   instance:
+    prefer-ip-address: true
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      patientServiceCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 2s
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 2
+        maxWaitDurationInHalfOpenState: 10s
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        minimumNumberOfCalls: 5
+        writableStackTraceEnabled: true
